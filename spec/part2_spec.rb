@@ -16,25 +16,33 @@ describe 'Ruby intro part 2' do
     end
   end
   
+  # defines the test
   describe '#starts_with_consonant?' do
+    # checks if the function is defined by checking if it raises an error for no method
     it 'should be defined' do
       expect { starts_with_consonant?('d') }.not_to raise_error#::NoMethodError)
     end
+    # checks for words that start with consonants and expects a return value of true
     it 'classifies true cases [1 point]' , points: 1 do
       expect(starts_with_consonant?('v')).to be_truthy, "'v' is a consonant"
+      # iterate over array of words to test each one
       %w[v vest Veeee crypt].each do |string|
         expect(starts_with_consonant?(string)).to be_truthy, "Incorrect results for input: \"#{string}\""
       end
     end
+    # checks for words that done start with consonants and expects a return value of false
     it 'classifies false cases [1 point]' , points: 1 do
       expect(starts_with_consonant?('a')).to be_falsy, "'a' is not a consonant"
+      # iterate over array of words to test each one
       %w[asdfgh Unix].each do |string|
         expect(starts_with_consonant?(string)).to be_falsy, "Incorrect results for input: \"#{string}\""
       end
     end
+    # checks for empty string and expects a return value of false
     it 'works on the empty string [0.5 points]' , points: 0.5 do
       expect(starts_with_consonant?('')).to be_falsy
     end
+    # checks for special characters and expects a return value of false
     it 'works on nonletters [0.5 points]' , points: 0.5 do
       expect(starts_with_consonant?('#foo')).to be_falsy
     end
